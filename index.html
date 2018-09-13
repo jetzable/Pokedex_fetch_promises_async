@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/pokedex.css">
+  <title>Fetch-Promises-Async Await</title>
+</head>
+
+<body>
+  <div class="pokedex">
+    <div class="pantalla">
+      <img src="https://78.media.tumblr.com/a6177f6b977637597850b273022c81ed/tumblr_nurhzkuKQO1syz1nro1_500.gif" alt="loader"
+        width="70" height="70" class="loader hidden" id="loader">
+      <img id="pokemon-image">
+    </div>
+    <p id="pokemon" class="nombre"></p>
+    <form action="" id="form">
+      <input type="text" name="pokemon">
+      <button>Buscar</button>
+    </form>
+  </div>
+
+  <script>
+    const $loader = document.getElementById('loader');
+    // Eventos, son las reacciones a las acciones que ejecuta el usuario.
+    const buscarPokemon = async (event) => {
+      event.preventDefault();
+      loader.classList.remove = 'hidden';
+      const form = new FormData($form);
+      const pokemonName = form.get('pokemon');
+      const pokemonData = await getPokemon(pokemonName);
+      buildPokemon(pokemonData, $poke, $pokeImg, $loader);
+    };
+    const $form = document.getElementById('form');
+    $form.addEventListener('submit', buscarPokemon);
+
+    // Fetch, API de Browser que nos ayuda interactuar con los datos.
+    // GET (Default)
+
+    const $poke = document.getElementById('pokemon');
+    const $pokeImg = document.getElementById('pokemon-image');
+
+    const buildPokemon = (pokemon, $nameContainer, $imageContainer, $loader) => {
+      $loader.classList.add('hidden');
+      $imageContainer.style.display = 'none';
+      $nameContainer.innerHTML = pokemon.name;
+      $imageContainer.setAttribute('src', pokemon.sprites.front_default);
+    }
+    const getPokemon = async (pokemonId) => {
+      const respuesta = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
+      const pokemon = await respuesta.json();
+      return pokemon;
+    }
+
+
+    // Promises
+
+
+    // Callback, es una función que es parametro de otra función.
+
+
+  </script>
+</body>
+
+</html>

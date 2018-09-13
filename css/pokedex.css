@@ -1,0 +1,44 @@
+body{
+    background-color: black;
+    color: white;
+    font-family: Arial;
+}
+
+.pokedex{
+    background-color: #FF0464;
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    height: 450px;
+}
+
+/* Flex para componentes y Grid para layout*/
+/* El modelo de caja en css es formado por alto ancho borde padding y margin */
+
+.pantalla {
+    background: #94c594;
+    border: 15px solid white;
+    height: 200px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader{
+    object-fit: none;
+}
+
+.loader .hidden{
+    display: block;
+}
+
+.nombre {
+    font-size: 40px;
+}
+
+.nombre::first-letter {
+    text-transform: uppercase;
+}
